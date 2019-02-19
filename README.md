@@ -3,7 +3,7 @@ A CircuitPython port of the CircuitPlayground megademo
 
 ## What is this?
 
-CircuitPlayground board from Adafruit are great... amazing. Even better than an Arduino UNO, you can program it using CircuitPython, without installing any software... But, to show it the wonderful hardware to someone, you have to upload the Arduino sketch called mega_demo.
+CircuitPlayground boards from Adafruit are great... amazing. Even better than an Arduino UNO, you can program it using CircuitPython, without installing any software... But, to show it the wonderful hardware to someone, you have to upload the Arduino sketch called mega_demo.
 
 ## Megademo
 
@@ -46,6 +46,10 @@ Just copy this files to your board. Remember to add the CircuitPython Bundle lib
 - To keep the work of the great Tony DiCola alive
 - To show a Playground to a new user, with CircuitPython
 - Made with love and rainbows for the CircuitPython Community and Adafruit.
+
+### Progress
+
+All of the Arduino mega_demo code is being ported into individual files, which will later on be stiched into a single demo with chanse to select via the buttons.
 
 --
 *Alvaro Figueroa*
