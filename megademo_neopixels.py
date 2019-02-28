@@ -1,21 +1,10 @@
-# CircuitPlaygroundExpress_NeoPixel
-
 import time
+from adafruit_circuitplayground.express import cpx
 
-import board
-import neopixel
+cpx.pixels.brightness = 0.1
+cpx.pixels.fill((0, 0, 0))
 
-pixels = neopixel.NeoPixel(board.NEOPIXEL, 10, brightness=.2)
-pixels.fill((0, 0, 0))
-pixels.show()
-
-# choose which demos to play
-# 1 means play, 0 means don't!
 simpleCircleDemo = 1
-flashDemo = 1
-rainbowDemo = 1
-rainbowCycleDemo = 1
-
 
 def wheel(pos):
     # Input a value 0 to 255 to get a color value.
@@ -30,65 +19,15 @@ def wheel(pos):
         return (0, int(pos * 3), int(255 - pos * 3))
 
 
-def rainbow_cycle(wait):
+def rainbow_cycle(demo_count):
     for j in range(255):
-        for i in range(len(pixels)):
-            idx = int((i * 256 / len(pixels)) + j * 10)
-            pixels[i] = wheel(idx & 255)
-        pixels.show()
-        time.sleep(wait)
-
-
-def rainbow(wait):
-    for j in range(255):
-        for i in range(len(pixels)):
-            idx = int(i + j)
-            pixels[i] = wheel(idx & 255)
-        pixels.show()
-        time.sleep(wait)
-
-
-def simpleCircle(wait):
-    RED = 0x100000  # (0x10, 0, 0) also works
-    YELLOW = (0x10, 0x10, 0)
-    GREEN = (0, 0x10, 0)
-    AQUA = (0, 0x10, 0x10)
-    BLUE = (0, 0, 0x10)
-    PURPLE = (0x10, 0, 0x10)
-    BLACK = (0, 0, 0)
-
-    for i in range(len(pixels)):
-        pixels[i] = RED
-        time.sleep(wait)
-    time.sleep(1)
-
-    for i in range(len(pixels)):
-        pixels[i] = YELLOW
-        time.sleep(wait)
-    time.sleep(1)
-
-    for i in range(len(pixels)):
-        pixels[i] = GREEN
-        time.sleep(wait)
-    time.sleep(1)
-
-    for i in range(len(pixels)):
-        pixels[i] = AQUA
-        time.sleep(wait)
-    time.sleep(1)
-
-    for i in range(len(pixels)):
-        pixels[i] = BLUE
-        time.sleep(wait)
-    time.sleep(1)
-
-    for i in range(len(pixels)):
-        pixels[i] = PURPLE
-        time.sleep(wait)
-    time.sleep(1)
-
-    for i in range(len(pixels)):
-        pixels[i] = BLACK
-        time.sleep(wait)
-    time.sleep(1)
-
+        for i in range(len(cpx.pixels)):
+            idx = int((i * 256 / len(cpx.pixels)) + j * 10)
+            cpx.pixels[i] = wheel(idx & 255)
+        if cpx.button_a or cpx.button_b:
+            while cpx.button_a or cpx.button_b: #debounce
+                time.sleep(0.1)
+            cpx.pixels.fill((0, 0, 0))
+            return demo_count + 1
+        else:
+            time.sleep(0.01)
