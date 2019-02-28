@@ -28,6 +28,7 @@
 #   7. That's it!  Tag a release and Travis should go to work to add .mpy files
 #      to the release.  It takes about a 2-3 minutes for a worker to spin up,
 #      build mpy-cross, and add the binaries to the release.
+dist: xenial
 language: generic
 
 sudo: true
