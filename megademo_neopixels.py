@@ -20,14 +20,15 @@ def wheel(pos):
 
 
 def rainbow_cycle(demo_count):
-    for j in range(255):
-        for i in range(len(cpx.pixels)):
-            idx = int((i * 256 / len(cpx.pixels)) + j * 10)
-            cpx.pixels[i] = wheel(idx & 255)
-        if cpx.button_a or cpx.button_b:
-            while cpx.button_a or cpx.button_b: #debounce
-                time.sleep(0.1)
-            cpx.pixels.fill((0, 0, 0))
-            return demo_count + 1
-        else:
-            time.sleep(0.01)
+    while True:
+        for j in range(255):
+            for i in range(len(cpx.pixels)):
+                idx = int((i * 256 / len(cpx.pixels)) + j * 10)
+                cpx.pixels[i] = wheel(idx & 255)
+            if cpx.button_a or cpx.button_b:
+                while cpx.button_a or cpx.button_b: #debounce
+                    time.sleep(0.1)
+                cpx.pixels.fill((0, 0, 0))
+                return demo_count + 1
+            else:
+                time.sleep(0.01)
