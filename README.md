@@ -49,9 +49,13 @@ Just copy this files to your board. Remember to add the CircuitPython Bundle lib
 
 ### Progress
 
-All of the Arduino mega_demo code is being ported into individual files, which will later on be stiched into a single demo with chanse to select via the buttons.
+- [x] Megapixel: Usable
+- [x] Captouch:  Usable
+- [x] Acceleration: Inicial upload
+
 
 --
+
 *Alvaro Figueroa*
 
 [Greencore Solutions](https://www.greencore.co.cr)
